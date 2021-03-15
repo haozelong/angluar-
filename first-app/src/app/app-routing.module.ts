@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AddComponent} from './add/add.component';
-import { AppComponent } from './app.component';
 import {EditComponent} from './edit/edit.component';
-import { PersonalCenterComponent } from './personal-center/personal-center.component';
+import {PersonalCenterComponent} from './personal-center/personal-center.component';
 import {WelcomeComponent} from './welcome.component';
+import {AppComponent} from './app.component';
 
 const routes: Routes = [
   {

@@ -48,7 +48,7 @@ describe('LoginComponent', () => {
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
   });
 
-  fit('onSubmit 用户登录', () => {
+  it('onSubmit 用户登录', () => {
     // 启动自动变更检测
     fixture.autoDetectChanges();
     component.teacher = {username: '张三', password: 'codedemo.club'} as Teacher;
