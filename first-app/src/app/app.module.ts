@@ -13,6 +13,8 @@ import { IndexComponent } from './index/index.component';
 import { PersonalCenterComponent } from './personal-center/personal-center.component';
 import { SexPipe } from './personal-center/sex.pipe';
 import { XAuthTokenInterceptor } from './x-auth-token.interceptor';
+import { NavComponent } from './nav/nav.component';
+import { ApiInterceptor } from 'src/app/api.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { XAuthTokenInterceptor } from './x-auth-token.interceptor';
     IndexComponent,
     PersonalCenterComponent,
     SexPipe,
-    WelcomeComponent
+    WelcomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { XAuthTokenInterceptor } from './x-auth-token.interceptor';
     RouterModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: XAuthTokenInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: XAuthTokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, multi: true, useClass: ApiInterceptor}
   ],
   bootstrap: [IndexComponent]
 })

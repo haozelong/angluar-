@@ -1,2 +1,3 @@
+<app-nav *ngIf="login" (beLogout)="onLogout()"></app-nav>
 <router-outlet *ngIf="login"></router-outlet>
 <app-login *ngIf="!login" (belogin)="onLogin($event)" ></app-login>

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
    */
   showError = false;
   test = true;
-  teacher = {} as Teacher;
+  teacher = new Teacher({});
   @Output()
   belogin = new EventEmitter<Teacher>();
   constructor(private httpClient: HttpClient, private ngZone: NgZone) {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     console.log(authToken);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('Authorization', 'Basic ' + authToken);
-    this.httpClient.get<Teacher>('http://angular.api.codedemo.club:81/teacher/login',
+    this.httpClient.get<Teacher>('teacher/login',
         {headers: httpHeaders})
       .subscribe(teacher => this.belogin.emit(teacher),
         error => {

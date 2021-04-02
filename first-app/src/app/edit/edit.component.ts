@@ -38,7 +38,7 @@ export class EditComponent implements OnInit {
   onSubmit(): void {
     console.log(this.teacher);
     // 获取ID，拼接URL
-    const url = 'http://angular.api.codedemo.club:81/teacher/' +
+    const url = 'teacher/' +
       this.activeRoute.snapshot.params.id;
     // 发起请求，更新教师，成功时打印请求结果并刷新教师列表查看效果，失败时打印失败结果
     this.httpClient.put(url, this.teacher)

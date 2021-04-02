@@ -10,7 +10,7 @@ describe('XAuthTokenInterceptor', () => {
       ]
   }));
 
-  fit('should be created', () => {
+  it('should be created', () => {
     const interceptor: XAuthTokenInterceptor = TestBed.inject(XAuthTokenInterceptor);
     expect(interceptor).toBeTruthy();
 

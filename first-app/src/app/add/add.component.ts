@@ -24,10 +24,10 @@ export class AddComponent implements OnInit {
   onSubmit(): void {
     console.log(this.teacher);
     this.httpClient
-      .post('http://angular.api.codedemo.club:81/teacher', this.teacher)
+      .post('teacher', this.teacher)
       .subscribe((result) => {
         console.log('接收到返回数据', result);
-        this.router.navigate(['/teacher']);
+        this.router.navigate(['teacher']);
       }, (error) => {
         console.log('请求失败', error);
       });

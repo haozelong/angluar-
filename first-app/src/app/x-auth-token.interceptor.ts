@@ -1,20 +1,22 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor, HttpResponseBase
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class XAuthTokenInterceptor implements HttpInterceptor {
   /**
-   * 首先由缓存中获取token，防止页面刷新失效
+   * 由缓存中获取token，防止页面刷新后失效
    */
-  private token = window.sessionStorage.getItem('xAuthToken');
-  constructor() {}
+  private token = window.sessionStorage.getItem('x-auth-token');
+
+  constructor() {
+  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (this.token !== null) {
@@ -25,8 +27,8 @@ export class XAuthTokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(tap(input => {
       // 仅当input类型为HttpResponseBase，才尝试获取token并更新
       if (input instanceof HttpResponseBase) {
-        const httpHeaders = input.headers;
-        const xAuthToken = httpHeaders.get('x-auth-token');
+        const httpHeader = input.headers;
+        const xAuthToken = httpHeader.get('x-auth-token');
         if (xAuthToken !== null) {
           this.setToken(xAuthToken);
         }

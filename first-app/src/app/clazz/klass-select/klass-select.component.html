@@ -1,0 +1,5 @@
+<select id="teacher" [formControl]="teacherId" class="form-control">
+  <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">
+    {{ teacher.name }}
+  </option>
+</select>

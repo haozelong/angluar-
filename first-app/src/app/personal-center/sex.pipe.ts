@@ -7,7 +7,7 @@ export class SexPipe implements PipeTransform {
 
   transform(value: boolean): string {
     if (value === undefined || value === null) {
-      console.warn('接收到了空的值');
+      console.warn('接收到了空的值11');
       return '-';
     }
     if (value === true) {
